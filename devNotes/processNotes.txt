@@ -120,7 +120,7 @@ the constructor function. ALWAYS add super(props) to React class component const
   }
 ----------------------------------------------------------
 
-## Classed are blueprints
+## Classes are blueprints
 Think of a "class" like a blueprint. The "React.Component" is itself a class that React provides you. and when you create a component class with
 "class MyClass extends AnotherClass", what you are doing is copying (i.e. extending) the blueprint from one class to the new class. So when you
 do "class MyClass extends React.Component", you are building a NEW blueprint based off of the existing "React.Component" class.
@@ -130,4 +130,18 @@ The "super" function is used inside classes to reach the original blueprint. In 
  that was defined in the constructor INSIDE the React.Component class. So think of super as the window outside the component to React.Component.
 
 ## To implement state, initialize state in the constructor.
-To implement state, you need to initialize 
+To implement state, you need to initialize state in the class component by assinging values to "this.state" inside the constructor. State is often 
+set as an object.
+----------------------------------------------------------
+  class TheDate extends React.Component {
+    constructor(props) {                       
+      super(props)              
+      this.state = {}
+    }
+    render() {
+      return (
+        <div />
+      )
+    }
+  }
+----------------------------------------------------------
