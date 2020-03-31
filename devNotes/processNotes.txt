@@ -190,3 +190,35 @@ To skip this test, just add .skip to the it function you wish to keep as a "work
 
 What is the component lifecycle?
 =================================
+Think of the component lifecycle like a buffet restaurant.
+  1. You enter the restaurant
+  2. Collect the food from the buffet
+  3. Eat the food.
+  4. Ask for condiments, water, cutlery.
+  5. Pay the bill and leave.
+
+Steps 1-5 only happen once for any visit to the buffet restaurant.
+However, steps 2-3 happen multiple times.
+In fact, you might repeat the whole process at a different restaurant.
+
+React components have a similar "life-cycle".
+Here are some of the life-cycle methods a React component has and how you think of them with the analogy:
+
+ 1. "Constructor" is entering the restaurant and asking for the buffet.
+ 2. "render" is collecting the food from the buffet.
+ 3. DOM IS UPDATED is you eating the food (note this isnt a life-cycle method but part of the life-cycle).
+ 4. "componentDidMount" asks for condiments, water, utensils.
+ 5. "componentWillMount" is paying the bill and leaving.
+
+
+The "constructor" happens once per component instance (i.e. once every time we use the component in JSX).
+The "render" can happen multiple times, for example if the props keep changing, the render will occur with every change.
+
+The "componentDidMount" could happen multiple times, like when there is a conditional rendering where props change the 
+component from rendered to not rendered.
+
+
+
+
+How do you visualize the life-cycle?
+====================================
