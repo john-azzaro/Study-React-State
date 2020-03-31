@@ -1,8 +1,8 @@
 import React from 'react'
 
 class TheDate extends React.Component {
-  constructor() {
-    
+  constructor(props) {
+    super(props)
   }
   render() {
     return (
