@@ -60,19 +60,35 @@ component, you want to capitalize the first letter.
   Then import and add TheDate to your App component:
   * Note that if you want ot see if this is working correctly, you can use th eReact developer tools to see 
   the component inside the App component.
-  ---------------------------------------------------
+  ------------------------------------------------------
     import React from 'react';
     import TheDate from './state/TheDate';                 // import TheDate.
 
     function App() {
       return (
         <main className='App'>
-          <TheDate />                                      / TheDate component.
+          <TheDate />                                      // TheDate component.
         </main>
       );
     }
 
     export default App;
-  ---------------------------------------------------
+  ---------------------------------------------------------
 
+NOW FOR THE STATE!!!
+
+To create the functionality for date-time, that is, to create the date-time when the TheDate component instances are created (instatiated), 
+you need to use the new method in React Classes called "constructor".
+----------------------------------------------------------
+  class TheDate extends React.Component {
+    constructor() {                                        // add a "constructor" method.
+
+    }
+    render() {
+      return (
+        <div />
+      )
+    }
+  }
+----------------------------------------------------------
 
