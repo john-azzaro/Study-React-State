@@ -17,3 +17,24 @@ one as well so I would urge you to consider at least doing a rough summary for y
 
 
 
+Objective of Study
+==================
+The objective of this study is to outline the process to create and render stateful components.
+Component State
+The component lifecycle
+Event handlers
+
+
+
+
+What is state?
+==============
+
+## State is the current condition of a component.
+State is usually meant to describe the current condition something is in. 
+React "state" is a feature that is used to chnage the current condition of a particular component.
+
+For example, suppose we want to build a component that displays the date and time. (<TheDate />). Although you could solve this problem by passing in 
+a prop for the date-time, this is inefficient because you would have to pass the date-time to the component from the parent every time it is rendered. 
+Since the component needs to be self contianed, it needs to be responsible for its owen date-time. So instead of using props, we'll use state.
+
