@@ -38,3 +38,41 @@ For example, suppose we want to build a component that displays the date and tim
 a prop for the date-time, this is inefficient because you would have to pass the date-time to the component from the parent every time it is rendered. 
 Since the component needs to be self contianed, it needs to be responsible for its owen date-time. So instead of using props, we'll use state.
 
+
+How do you use state with a React component?
+============================================
+First, inside your src folder create a new folder called "state". After you have this, then create a class component called "TheDate". Note again here that since this is a custom 
+component, you want to capitalize the first letter.
+  --------------------------------------------
+    import React from 'react'
+
+    class TheDate extends React.Component {
+      render() {
+        return (
+          <div />
+        );
+      }
+    }
+
+    export default TheDate;
+  --------------------------------------------
+
+  Then import and add TheDate to your App component:
+  * Note that if you want ot see if this is working correctly, you can use th eReact developer tools to see 
+  the component inside the App component.
+  ---------------------------------------------------
+    import React from 'react';
+    import TheDate from './state/TheDate';                 // import TheDate.
+
+    function App() {
+      return (
+        <main className='App'>
+          <TheDate />                                      / TheDate component.
+        </main>
+      );
+    }
+
+    export default App;
+  ---------------------------------------------------
+
+
