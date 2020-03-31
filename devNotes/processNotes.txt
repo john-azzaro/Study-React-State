@@ -158,3 +158,35 @@ To access the initial state with the render function.
 
 
 How do you write tests for state components?
+============================================
+To write tests for state components, you can simply write normal Jest tests. Note that for the snapshot test, you want
+to skip it because it will fail.  This is because the date is generated fresh every time it renders so it will always fail.
+To skip this test, just add .skip to the it function you wish to keep as a "work in progress" test code.
+
+--------------------------------------------------------------
+  import React from 'react';
+  import ReactDOM from 'react-dom'
+  import renderer from 'react-test-renderer'
+  import TheDate from './TheDate'
+
+  describe(`TheDate Component`, () => {
+    it('renders without crashing', () => {
+      const div = document.createElement('div');
+      ReactDOM.render(<TheDate />, div);
+      ReactDOM.unmountComponentAtNode(div);
+    })
+
+    it.skip('renders the UI as expected', () => {
+      expect(
+        renderer.create(<TheDate />).toJSON()
+      ).toMatchSnapshot()
+    })
+  })
+--------------------------------------------------------------
+
+
+
+
+
+What is the component lifecycle?
+=================================
