@@ -128,11 +128,11 @@ do "class MyClass extends React.Component", you are building a NEW blueprint bas
 The "super" function is used inside classes to reach the original blueprint. In the case of our use of super here, you are repeating the functionality
  that was defined in the constructor INSIDE the React.Component class. So think of super as the window outside the component to React.Component.
 
-## To implement state, initialize state in the constructor.
+## Set the initial state in the constuctor with this.state.
 To implement state, you need to initialize state in the class component by assinging values to "this.state" inside the constructor. State is often 
 set as an object. Inside the state object, you can add properties that set the initial state.
 
-## Access the initial state with this.state.X
+## Access the initial state with this.state.X in the render.
 To access the initial state with the render function.
 ----------------------------------------------------------
   class TheDate extends React.Component {
@@ -157,3 +157,4 @@ To access the initial state with the render function.
 
 
 
+How do you write tests for state components?
