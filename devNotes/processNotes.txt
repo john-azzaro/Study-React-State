@@ -253,7 +253,10 @@ What is state?
 * There are two ways to think about data in React: state and props.
 * There are specific instances in which you should use either.
 * Props are like arguments to a function... when you create a component inside react and you want to render it, you need to pass it the props
-  you want to give to it. If you have an counter application, the thing you going to want to pass is the initial count you want to start at.
+  you want to give to it. If you have an counter application, the thing you going to want to pass is the initial count you want to start at. So you
+  are going to pass your counter component its initial count number INSIDE the props. The reason why you use props for things you want to initialize 
+  your component to or what you want your component to render like. So 0 would be passed via props. You could also pass things like title and subtitles 
+  and things like that and if at some point those things change (i.e. something else in the application chnages the props) the component will be rerendered.
 
 
 
