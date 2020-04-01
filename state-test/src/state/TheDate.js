@@ -3,18 +3,17 @@ import React from 'react'
 class TheDate extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      foo: 'foo',
-      hello: 'Hello, world!',
-      list: [1, 2, 3],
-      obj: { nested: 'object', yes: true },
-    }
+    this.state = { datetime: new Date() };
+  }
+  componentDidMount() {
+    setInterval(() => {
+      console.log('tick')
+    }, 1000)
   }
   render() {
-    console.log(this.state)
     return (
-      <div>{this.state.hello}</div>
-    );
+      <div>{this.state.datetime.toLocaleString()}</div>
+    )
   }
 }
 

@@ -250,3 +250,5 @@ How do you visualize the life-cycle?
 
 How do you update the state of a component?
 ===========================================
+The constructor and the render life-cycle initialize the state and update the DOM.
+
