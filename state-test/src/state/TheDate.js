@@ -6,9 +6,12 @@ class TheDate extends React.Component {
     this.state = { datetime: new Date() };
   }
   componentDidMount() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       console.log('tick')
     }, 1000)
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
   render() {
     return (
