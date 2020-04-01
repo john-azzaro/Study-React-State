@@ -248,6 +248,16 @@ How do you visualize the life-cycle?
 
 
 
+What is state?
+==============
+* There are two ways to think about data in React: state and props.
+* There are specific instances in which you should use either.
+* Props are like arguments to a function... when you create a component inside react and you want to render it, you need to pass it the props
+  you want to give to it. If you have an counter application, the thing you going to want to pass is the initial count you want to start at.
+
+
+
+
 How do you update the state of a component?
 ===========================================
 Components created as classes have a lot of features, such as lifecycle methods. The constructor and the render life-cycle initialize the state and update the DOM.
