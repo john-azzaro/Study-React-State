@@ -257,12 +257,12 @@ Components created as classes have a lot of features, such as lifecycle methods.
 import React from 'react'
 
 class TheDate extends React.Component {
-  constructor(props) {                                            // The component is created (i.e. <Component />)
-    super(props)                                                      // with props
+  constructor(props) {                                                // 1. The component is created (i.e. <Component />)
+    super(props)                                                      
     this.state = { datetime: new Date() };
     console.log('constructor')
   }
-  componentDidMount() {
+  componentDidMount() {                                               // 4.A. The component has been added to the DOM.
     console.log('componentDidMount')
     this.interval = setInterval(() => {
       console.log('setInterval')
@@ -271,12 +271,13 @@ class TheDate extends React.Component {
       })
     }, 1000)
   }
-  componentWillUnmount() {
+  componentWillUnmount() {                                           // 4.B. The compoent is about to be removed from the DOM. When the parent components render doesnt render this component anymore, the compoennt will be removed.
     clearInterval(this.interval)
   }
-  render() {
-    console.log('render')
-    return (
+  render() {                                                          // 2. Component reacts to being created and updated (can happen again if props or state change).
+                                                                      // 3. Update the DOM -- If the components render returns something, it will be mounted. Of result of render function is different, it will be updated.
+    console.log('render')                                             
+    return (  
       <div>{this.state.datetime.toLocaleString()}</div>
     )
   }
