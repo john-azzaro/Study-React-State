@@ -227,10 +227,22 @@ component from rendered to not rendered.
 How do you visualize the life-cycle?
 ====================================
 
- [Instance of component]
+ {Instance of component}
           |
     [Constructor]
           |
        [Render] <------ {props changed} 
           |
-          
+ (Will component be removed from the DOM?) ---Yes---> [componentWillUnmount]
+          |                                                  |
+          No                                                 |
+          |                                                  |
+    {Update the DOM}    <------------------------------------|
+          |
+  [Was component Added to the DOM?]  -----Yes -------> [componentDidMount]
+          |
+          No
+          |
+          V
+
+  
