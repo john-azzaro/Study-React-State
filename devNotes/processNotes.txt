@@ -245,4 +245,8 @@ How do you visualize the life-cycle?
           |
           V
 
-  
+
+
+
+How do you update the state of a component?
+===========================================
