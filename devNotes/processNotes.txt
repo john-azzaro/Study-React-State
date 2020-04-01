@@ -258,6 +258,28 @@ What is state?
   your component to or what you want your component to render like. So 0 would be passed via props. You could also pass things like title and subtitles 
   and things like that and if at some point those things change (i.e. something else in the application chnages the props) the component will be rerendered.
 
+* State is very different.
+* State is something handled INSIDE the component (props are handled OUTSIDE the component and passed IN).
+* In the counter example, the current count past 0 is handled by the state inside the component.
+* The initial count is passed in via props, the state is then set to that initial count INSIDE the component.
+
+* Another difference between state and props is that when you change the state of your application, that section will be rerendered. With props, you CANNOT 
+  change them. For props, you would need to change them OUTSIDE the component.
+* For example, a title and subtitle would not really change so it doesnt need any state... it can be passed in as a prop.
+* With a counter, you are updating the count so you need state to store the thing that we are updating.
+
+* State is there when you need to rerender and update your application based on something the user has done.
+* So if you want to change something in your application, it needs to be stored in state so that it properly rerenders when it changes.
+
+* Props are useful when you just want to display some information inside the component without hard coding it... it is a variable to a function.
+
+* So when you create a class with a constructor, the things you pass to the constructor of that class are going to be the things that are your props
+  for a component in your app.
+
+* So when should you use state? If you are handling a peice of information inside the component and inside that component only, then you use state. 
+* If that information is being handled outside the component (like in a parent), then it needs to be passed in via props. Props are for things that will
+  remain static and will not change.
+
 
 
 
