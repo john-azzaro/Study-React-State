@@ -107,7 +107,7 @@ supplied to the constructor as an argument.
 However, when you add this empty constructor, you will get an extensive error that says "ReferenceError: Must call super 
 constructor in derived class before accessing 'this' or returning from derived constructor". Why has this error occured? 
 
-It occurs because the constructor is used by React internals when the components are created. Constrcutors are a 
+It occurs because the constructor is used by React internals when the components are created. Constructors are a 
 life-cycle method.To resolve this error, you need to add a "super" inside the constructor function. ALWAYS add super(props) 
 to React class component constructor methods.
 ----------------------------------------------------------
@@ -250,5 +250,42 @@ How do you visualize the life-cycle?
 
 How do you update the state of a component?
 ===========================================
-The constructor and the render life-cycle initialize the state and update the DOM.
+Components created as classes have a lot of features, such as lifecycle methods. The constructor and the render life-cycle initialize the state and update the DOM.
 
+
+-----------------------------------------------------------------
+import React from 'react'
+
+class TheDate extends React.Component {
+  constructor(props) {                                            // The component is created (i.e. <Component />)
+    super(props)                                                      // with props
+    this.state = { datetime: new Date() };
+    console.log('constructor')
+  }
+  componentDidMount() {
+    console.log('componentDidMount')
+    this.interval = setInterval(() => {
+      console.log('setInterval')
+      this.setState({
+        datetime: new Date()
+      })
+    }, 1000)
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+  render() {
+    console.log('render')
+    return (
+      <div>{this.state.datetime.toLocaleString()}</div>
+    )
+  }
+}
+
+export default TheDate;
+
+-----------------------------------------------------------------
+
+
+technical details
+==================
