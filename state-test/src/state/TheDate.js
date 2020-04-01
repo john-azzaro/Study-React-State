@@ -5,11 +5,13 @@ class TheDate extends React.Component {
     super(props)
     this.state = { datetime: new Date() };
   }
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      console.log('tick')
-    }, 1000)
-  }
+componentDidMount() {
+  this.interval = setInterval(() => {
+    this.setState({
+      datetime: new Date()
+    })
+  }, 1000)
+}
   componentWillUnmount() {
     clearInterval(this.interval)
   }
