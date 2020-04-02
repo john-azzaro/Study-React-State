@@ -360,7 +360,7 @@ For this example, we'll make a basic clicker. We set the state at zero for the i
   export default Counter;
 ---------------------------------------------------------
 
-
+## Add the "onClick" prop to wire the button to trigger when clicked.
 To wire code to be triggered when a button is clicked, we need to add a prop to the BUTTON JSX ITSELF!
 Remember that within the props object there are a number properties you can select. IN this case, we want "onClick".
 ---------------------------------------------------------------------------
@@ -381,7 +381,7 @@ Remember that within the props object there are a number properties you can sele
   }
 ----------------------------------------------------------------------------
 
-
+## To make code tidy, move the event handler to a seperate method.
 However, a full event handler is going to be very cluttered, so its best to move the event handler
 to a method on the class called "handleButtonClick"
 ---------------------------------------------------------------------------
@@ -405,16 +405,16 @@ to a method on the class called "handleButtonClick"
   }
 ----------------------------------------------------------------------------
 
-
-At this point, you will get an error that reads "TypeError: Cannot read property 'state' of undefined". This means
+## Use an arrow function to avoid typeerrors.
+At this point, you will get an error that reads "TypeError: Cannot read property 'state' of undefined". Apparently this is a bug. This means
 that we are trying to read a property called state ona variable thats currently set to undefined.  We want to read "this",
-but right now it is set to undefined. To solve this, use an arrowfunction
+but right now it is set to undefined. To solve this, use an ARROW FUNCTION...not a function.
 ------------------------------------------------------------------------
 class Counter extends React.Component {
   state = {
     count: 0
   };
-  handleButtonClick = () => {
+  handleButtonClick = () => {                                               // use an arrow function for the method to avoid the error bug.
     console.log(this.state.count)
   }
   render() {
@@ -429,4 +429,6 @@ class Counter extends React.Component {
   }
 }
 ------------------------------------------------------------------------
+
+## 
 
