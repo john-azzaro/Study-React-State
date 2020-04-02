@@ -30,6 +30,60 @@ Event handlers
 What is state?
 ==============
 
+* You can use state in React components.
+* State in React components has a lot in common with the concept of "state" being the condition of something.
+* State MUST be initialized in the constructor.
+* The component state is set as an object with properties of your choosing.
+* You access and read state with "this.state" inside component methods.
+
+
+
+
+* State and and props are two seperate features and therefore cannot be used together.
+* You need to choose which you want to use.
+* If the value will change due to the events after the component is mounted, it could be state.
+* If the value is passed in by the components parent, its props, not state. If the value is not passed in, it is state.
+* If the value can be computed from other state, it is not a state.
+
+
+
+* There are two ways to think about data in React: state and props.
+* There are specific instances in which you should use either.
+* Props are like arguments to a function... when you create a component inside react and you want to render it, you need to pass it the props
+  you want to give to it. If you have an counter application, the thing you going to want to pass is the initial count you want to start at. So you
+  are going to pass your counter component its initial count number INSIDE the props. The reason why you use props for things you want to initialize 
+  your component to or what you want your component to render like. So 0 would be passed via props. You could also pass things like title and subtitles 
+  and things like that and if at some point those things change (i.e. something else in the application chnages the props) the component will be rerendered.
+
+* State is very different.
+* State is something handled INSIDE the component (props are handled OUTSIDE the component and passed IN).
+* In the counter example, the current count past 0 is handled by the state inside the component.
+* The initial count is passed in via props, the state is then set to that initial count INSIDE the component.
+
+* Another difference between state and props is that when you change the state of your application, that section will be rerendered. With props, you CANNOT 
+  change them. For props, you would need to change them OUTSIDE the component.
+* For example, a title and subtitle would not really change so it doesnt need any state... it can be passed in as a prop.
+* With a counter, you are updating the count so you need state to store the thing that we are updating.
+
+* State is there when you need to rerender and update your application based on something the user has done.
+* So if you want to change something in your application, it needs to be stored in state so that it properly rerenders when it changes.
+
+* Props are useful when you just want to display some information inside the component without hard coding it... it is a variable to a function.
+
+* So when you create a class with a constructor, the things you pass to the constructor of that class are going to be the things that are your props
+  for a component in your app.
+
+* So when should you use state? If you are handling a peice of information inside the component and inside that component only, then you use state. 
+* If that information is being handled outside the component (like in a parent), then it needs to be passed in via props. Props are for things that will
+  remain static and will not change.
+
+
+
+
+
+What is state?
+==============
+
 ## State is the current condition of a component.
 State is usually meant to describe the current condition something is in. 
 React "state" is a feature that is used to change the current condition of a particular component.
@@ -73,10 +127,6 @@ component, you want to capitalize the first letter.
     export default App;
   ---------------------------------------------------------
 
-
-
-
-NOW FOR THE STATE!!!
 
 
 
@@ -209,8 +259,11 @@ In fact, you might repeat the whole process at a different restaurant.
 
 
 
+
+
 What are React life-cycle methods?
 ================================== 
+Components created as classes have a lot of features, such as lifecycle methods. The constructor and the render life-cycle initialize the state and update the DOM.
 React components have a similar "life-cycle".
 Here are some of the life-cycle methods a React component has and how you think of them with the analogy:
 
@@ -230,103 +283,6 @@ The "render" method is another life-cycle method.
 The "componentDidMount" could happen multiple times, like when there is a conditional rendering where props change the 
 component from rendered to not rendered. You would want to use this for setTimeout or setInterval calls. This is actually
 a method to use when making API calls.
-
-
-
-
-
-
-
-
-How do you visualize the life-cycle?
-====================================
-
- {Instance of component}
-          |
-    [Constructor]
-          |
-       [Render] <------ {props changed} 
-          |
- (Will component be removed from the DOM?) ---Yes---> [componentWillUnmount]
-          |                                                  |
-          No                                                 |
-          |                                                  |
-    {Update the DOM}    <------------------------------------|
-          |
-  [Was component Added to the DOM?]  -----Yes -------> [componentDidMount]
-          |
-          No
-          |
-          V
-
-
-
-
-
-
-
-What is state?
-==============
-
-* You can use state in React components.
-* State in React components has a lot in common with the concept of "state" being the condition of something.
-* State MUST be initialized in the constructor.
-* The component state is set as an object with properties of your choosing.
-* You access and read state with "this.state" inside component methods.
-
-
-
-
-* State and and props are two seperate features and therefore cannot be used together.
-* You need to choose which you want to use.
-* If the value will change due to the events after the component is mounted, it could be state.
-* If the value is passed in by the components parent, its props, not state. If the value is not passed in, it is state.
-* If the value can be computed from other state, it is not a state.
-
-
-
-* There are two ways to think about data in React: state and props.
-* There are specific instances in which you should use either.
-* Props are like arguments to a function... when you create a component inside react and you want to render it, you need to pass it the props
-  you want to give to it. If you have an counter application, the thing you going to want to pass is the initial count you want to start at. So you
-  are going to pass your counter component its initial count number INSIDE the props. The reason why you use props for things you want to initialize 
-  your component to or what you want your component to render like. So 0 would be passed via props. You could also pass things like title and subtitles 
-  and things like that and if at some point those things change (i.e. something else in the application chnages the props) the component will be rerendered.
-
-* State is very different.
-* State is something handled INSIDE the component (props are handled OUTSIDE the component and passed IN).
-* In the counter example, the current count past 0 is handled by the state inside the component.
-* The initial count is passed in via props, the state is then set to that initial count INSIDE the component.
-
-* Another difference between state and props is that when you change the state of your application, that section will be rerendered. With props, you CANNOT 
-  change them. For props, you would need to change them OUTSIDE the component.
-* For example, a title and subtitle would not really change so it doesnt need any state... it can be passed in as a prop.
-* With a counter, you are updating the count so you need state to store the thing that we are updating.
-
-* State is there when you need to rerender and update your application based on something the user has done.
-* So if you want to change something in your application, it needs to be stored in state so that it properly rerenders when it changes.
-
-* Props are useful when you just want to display some information inside the component without hard coding it... it is a variable to a function.
-
-* So when you create a class with a constructor, the things you pass to the constructor of that class are going to be the things that are your props
-  for a component in your app.
-
-* So when should you use state? If you are handling a peice of information inside the component and inside that component only, then you use state. 
-* If that information is being handled outside the component (like in a parent), then it needs to be passed in via props. Props are for things that will
-  remain static and will not change.
-
-
-
-
-
-
-
-
-How do you update the state of a component?
-===========================================
-Components created as classes have a lot of features, such as lifecycle methods. The constructor and the render life-cycle initialize the state and update the DOM.
-
-
 -----------------------------------------------------------------
 import React from 'react'
 
@@ -359,6 +315,33 @@ class TheDate extends React.Component {
 export default TheDate;
 
 -----------------------------------------------------------------
+
+
+
+
+
+How do you visualize the life-cycle?
+====================================
+
+ {Instance of component}
+          |
+    [Constructor]
+          |
+       [Render] <------ {props changed} 
+          |
+ (Will component be removed from the DOM?) ---Yes---> [componentWillUnmount]
+          |                                                  |
+          No                                                 |
+          |                                                  |
+    {Update the DOM}    <------------------------------------|
+          |
+  [Was component Added to the DOM?]  -----Yes -------> [componentDidMount]
+          |
+          No
+          |
+          V
+
+
 
 
 
