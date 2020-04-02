@@ -364,7 +364,7 @@ For this example, we'll make a basic clicker. We set the state at zero for the i
 To wire code to be triggered when a button is clicked, we need to add a prop to the BUTTON JSX ITSELF!
 
 Remember that within the props object there are a number properties you can select. IN this case, we want "onClick".
-----------------------------------------------------------
+---------------------------------------------------------------------------
   import React from 'react';
 
   class Counter extends React.Component {
@@ -375,7 +375,7 @@ Remember that within the props object there are a number properties you can sele
       return (
         <div>
           <p>The current count: {this.state.count}</p>
-          <button>
+          <button onClick={function() { console.log('clicked!') }} >        // add the "onClick" prop.
             Add 1
           </button>
         </div>
@@ -384,4 +384,29 @@ Remember that within the props object there are a number properties you can sele
   }
 
   export default Counter;
-----------------------------------------------------------
+----------------------------------------------------------------------------
+
+However, a full event handler is going to be very cluttered, so its best to move the event handler
+to a method on the class called "handleButtonClick"
+---------------------------------------------------------------------------
+  import React from 'react';
+
+  class Counter extends React.Component {
+    state = {
+      count: 0                                   
+    };
+    render() {
+      return (
+        <div>
+          <p>The current count: {this.state.count}</p>
+          <button onClick={this.handleButtonClick} >                        // changed to a method on the class called "handleButtonClick"
+            Add 1
+          </button>
+        </div>
+      )
+    }
+  }
+
+  export default Counter;
+----------------------------------------------------------------------------
+
