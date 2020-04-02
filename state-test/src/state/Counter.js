@@ -1,9 +1,12 @@
 import React from 'react';
 
 class Counter extends React.Component {
-  state = {
-    count: 0
-  };
+  constructor(props) {
+    super(props)
+    this.state = { 
+      count: 0 
+    }
+  }
   handleButtonClick = () => {
     const newCount = this.state.count + 1;
     this.setState({
@@ -23,3 +26,8 @@ class Counter extends React.Component {
 }
 
 export default Counter;
+
+
+
+
+

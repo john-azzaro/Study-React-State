@@ -339,12 +339,13 @@ How do you implement event listeners?
 
 For this example, we'll make a basic clicker. We set the state at zero for the initial count and then reference it in the component using this.state.count.
 ---------------------------------------------------------
-  import React from 'react';
-
   class Counter extends React.Component {
-    state = {
-      count: 0                                                // initial state set to 0
-    };
+    constructor(props) {
+      super(props)
+      this.state = { 
+        count: 0                                                  // set the initial state to 0 so that when you call this.state, it will be 0.
+      }
+    }
     render() {
       return (
         <div>
@@ -356,8 +357,6 @@ For this example, we'll make a basic clicker. We set the state at zero for the i
       )
     }
   }
-
-  export default Counter;
 ---------------------------------------------------------
 
 ## Add the "onClick" prop to wire the button to trigger when clicked.
@@ -365,9 +364,12 @@ To wire code to be triggered when a button is clicked, we need to add a prop to 
 Remember that within the props object there are a number properties you can select. IN this case, we want "onClick".
 ---------------------------------------------------------------------------
   class Counter extends React.Component {
-    state = {
-      count: 0                                   
-    };
+    constructor(props) {
+      super(props)
+      this.state = { 
+        count: 0 
+      }
+    }
     render() {
       return (
         <div>
@@ -386,9 +388,12 @@ However, a full event handler is going to be very cluttered, so its best to move
 to a method on the class called "handleButtonClick"
 ---------------------------------------------------------------------------
   class Counter extends React.Component {
-    state = {
-      count: 0                                   
-    };
+    constructor(props) {
+      super(props)
+      this.state = { 
+        count: 0 
+      }
+    }
     handleButtonClick() {                                                  // 2. Inserted the "handleClickButton" method before render.
       console.log(this.state.count);                                       // 3. and to test, when you click "add 1", it will show the clicks you make at that time.
     } 
@@ -412,9 +417,12 @@ but right now it is set to undefined. To solve this, use an ARROW FUNCTION...not
 the "this" is refering to the class instance.
 ------------------------------------------------------------------------
   class Counter extends React.Component {
-    state = {
-      count: 0
-    };
+    constructor(props) {
+      super(props)
+      this.state = { 
+        count: 0 
+      }
+    }
     handleButtonClick = () => {                                               // use an arrow function for the method to avoid the error bug.
       console.log(this.state.count)
     }
@@ -444,9 +452,12 @@ To implement this, we first create a variable called "newCount" and store it as 
 Then, to set the new state, use this.setState with the incrementing variable we just created.
 -------------------------------------------------------------------------
   class Counter extends React.Component {
-    state = {
-      count: 0
-    };
+    constructor(props) {
+      super(props)
+      this.state = { 
+        count: 0 
+      }
+    }
     handleButtonClick = () => {                                           
       const newCount = this.state.count + 1;                                 // variable that increments the count by 1.
       this.setState({                                                        // sets the new state count.
@@ -465,5 +476,13 @@ Then, to set the new state, use this.setState with the incrementing variable we 
     }
   }
 -------------------------------------------------------------------------
+
+
+
+
+
+
+Can you read props and state together?
+======================================
 
 
