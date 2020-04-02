@@ -335,4 +335,36 @@ export default TheDate;
 How do you implement event listeners?
 =====================================
 * Events and state go hand in hand.
-* It is VERY common to update state in response to a users action (i.e. submitting the form, interaction with a control, clicking a button, etc.)
+* It is VERY common to update state in response to a users action (i.e. submitting the form, interaction with a control, clicking a button, etc.).
+
+For this example, we'll make a basic clicker. We set the state at zero for the initial count and then reference it in the component using this.state.count.
+---------------------------------------------------------
+import React from 'react';
+
+class Counter extends React.Component {
+  state = {
+    count: 0
+  };
+  render() {
+    return (
+      <div>
+        <p>The current count: {this.state.count}</p>
+        <button>
+          Add 1
+        </button>
+      </div>
+    )
+  }
+}
+
+export default Counter;
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+* To wire code to be triggered when a button is clicked, 
