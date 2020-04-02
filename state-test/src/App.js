@@ -7,6 +7,7 @@ function App() {
     <main className='App'>
       <TheDate />
       <Counter />
+      <Counter count={123} />
     </main>
   );
 }

@@ -134,10 +134,10 @@ The "super" function is used inside classes to reach the original blueprint. In 
 
 ## Set the initial state in the constuctor with "this.state".
 To implement state, you need to initialize state in the class component by assinging values to "this.state" inside the constructor. State is often 
-set as an object. Inside the state object, you can add properties that set the initial state.
+set as an object. Inside the state object, you can add properties that set the initial state. IMPORTANT: STATE MUST BE INITIALIZED IN THE CONSTRUCTOR.
 
 ## Access initial states with this.state.X in the render.
-To access the initial state with the render function.
+You access and read state with "this.state" inside component methods. In this example, you access and read the the state of hello.
 ----------------------------------------------------------
   class TheDate extends React.Component {
     constructor(props) {                       
@@ -205,6 +205,12 @@ Steps 1-5 only happen once for any visit to the buffet restaurant.
 However, steps 2-3 happen multiple times.
 In fact, you might repeat the whole process at a different restaurant.
 
+
+
+
+
+What are React life-cycle methods?
+================================== 
 React components have a similar "life-cycle".
 Here are some of the life-cycle methods a React component has and how you think of them with the analogy:
 
@@ -212,14 +218,22 @@ Here are some of the life-cycle methods a React component has and how you think 
  2. "render" is collecting the food from the buffet.
  3. DOM IS UPDATED is you eating the food (note this isnt a life-cycle method but part of the life-cycle).
  4. "componentDidMount" asks for condiments, water, utensils.
- 5. "componentWillMount" is paying the bill and leaving.
+ 5. "componentWillUnmount" is paying the bill and leaving.
 
 
-The "constructor" happens once per component instance (i.e. once every time we use the component in JSX).
-The "render" can happen multiple times, for example if the props keep changing, the render will occur with every change.
+The "constructor" is one of many life cycle methods. The "constructor" happens once per component instance (i.e. once 
+every time we use the component in JSX). The "render" can happen multiple times, for example if the props keep changing, 
+the render will occur with every change.
+
+The "render" method is another life-cycle method.
 
 The "componentDidMount" could happen multiple times, like when there is a conditional rendering where props change the 
-component from rendered to not rendered.
+component from rendered to not rendered. You would want to use this for setTimeout or setInterval calls. This is actually
+a method to use when making API calls.
+
+
+
+
 
 
 
@@ -253,6 +267,24 @@ How do you visualize the life-cycle?
 
 What is state?
 ==============
+
+* You can use state in React components.
+* State in React components has a lot in common with the concept of "state" being the condition of something.
+* State MUST be initialized in the constructor.
+* The component state is set as an object with properties of your choosing.
+* You access and read state with "this.state" inside component methods.
+
+
+
+
+* State and and props are two seperate features and therefore cannot be used together.
+* You need to choose which you want to use.
+* If the value will change due to the events after the component is mounted, it could be state.
+* If the value is passed in by the components parent, its props, not state. If the value is not passed in, it is state.
+* If the value can be computed from other state, it is not a state.
+
+
+
 * There are two ways to think about data in React: state and props.
 * There are specific instances in which you should use either.
 * Props are like arguments to a function... when you create a component inside react and you want to render it, you need to pass it the props
@@ -439,7 +471,16 @@ the "this" is refering to the class instance.
   }
 ------------------------------------------------------------------------
 
+
 ## To set the state, use this.setState method.
+When you use "this.setState", you update the state of a component that has been mounted and pass in an object to "merge" over the toMatchSnapshot
+of an exisiting state (like Object.assign).  In the example case below, what we are doing is updating the state of count and merging the initial
+state to the value of newCount.   
+
+Note here that state updates go hand-in-hand with event handlers. In this example case, the the state update occurs in the "handleButtonClick"
+action the user takes. But keep in mind the "this" problem which is a bug that needs to be fixed in future versions.
+
+==clean up==
 Now that the event listener is properly hooked up and setup in sich a way where it avoid the bug error, you can add your code
 for the onClick action. At this point in the example, we have an exisiting count of 0 supplied by the current state. 
 
@@ -484,5 +525,62 @@ Then, to set the new state, use this.setState with the incrementing variable we 
 
 Can you read props and state together?
 ======================================
+State and and props are two seperate features and therefore cannot be used together.
+
+You can read props and state at the same time. You can even have the same name. 
+It is important to note that props and state can live together and even have the same name and not conflict with each other.
+
+So for example, if you have two instances of the same component:
+-----------------------------------
+  function App() {
+    return (
+      <main className='App'>
+        <Counter />                     // Instance #1.         
+        <Counter count={123} />         // Instance #2 with a prop of "count" with the value of "123".
+      </main>
+    );
+  }
+-----------------------------------
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Side note on console.log
+===========================
+Remember to use console.log when you are debugging. I kinda forgot how useful it was but for the steps you want to track, you just 
+call console.log and pass the message to appear for the prop and the prop name.
+
+--------------------------------------------------------------------
+  class Counter extends React.Component {
+    constructor(props) {
+      console.log('props in constructor', props)                     // logs props.
+      super(props)
+      this.state = { count: 0 }
+    }
+    handleButtonClick = () => {
+      console.log('props in handleButtonClick', this.props)            // logs this.props
+      console.log('state in handleButtonClick', this.state)            // logs this.state
+      this.setState({ count: this.state.count + 1 })
+    }
+    // ...
+  }
+--------------------------------------------------------------------
