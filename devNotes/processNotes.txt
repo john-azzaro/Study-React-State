@@ -408,27 +408,62 @@ to a method on the class called "handleButtonClick"
 ## Use an arrow function to avoid typeerrors.
 At this point, you will get an error that reads "TypeError: Cannot read property 'state' of undefined". Apparently this is a bug. This means
 that we are trying to read a property called state ona variable thats currently set to undefined.  We want to read "this",
-but right now it is set to undefined. To solve this, use an ARROW FUNCTION...not a function.
+but right now it is set to undefined. To solve this, use an ARROW FUNCTION...not a function. Why? Because the arrow function makes sure that
+the "this" is refering to the class instance.
 ------------------------------------------------------------------------
-class Counter extends React.Component {
-  state = {
-    count: 0
-  };
-  handleButtonClick = () => {                                               // use an arrow function for the method to avoid the error bug.
-    console.log(this.state.count)
+  class Counter extends React.Component {
+    state = {
+      count: 0
+    };
+    handleButtonClick = () => {                                               // use an arrow function for the method to avoid the error bug.
+      console.log(this.state.count)
+    }
+    render() {
+      return (
+        <div>
+          <p>The current count: {this.state.count}</p>
+          <button onClick={this.handleButtonClick}>
+            Add 1
+          </button>
+        </div>
+      )
+    }
   }
-  render() {
-    return (
-      <div>
-        <p>The current count: {this.state.count}</p>
-        <button onClick={this.handleButtonClick}>
-          Add 1
-        </button>
-      </div>
-    )
-  }
-}
 ------------------------------------------------------------------------
 
-## 
+## To set the state, use this.setState method.
+Now that the event listener is properly hooked up and setup in sich a way where it avoid the bug error, you can add your code
+for the onClick action. At this point in the example, we have an exisiting count of 0 supplied by the current state. 
+
+When the user clicks on the button, the "onClick" prop calls "this.handleButtonClick" which in turn executes the action we want 
+to happen when the user clicks. In this case, we want to increment by one for every click the user makes. 
+
+To implement this, we first create a variable called "newCount" and store it as a constant. The value will be the current count, 
+(this.state.count) plus 1.
+
+Then, to set the new state, use this.setState with the incrementing variable we just created.
+-------------------------------------------------------------------------
+  class Counter extends React.Component {
+    state = {
+      count: 0
+    };
+    handleButtonClick = () => {                                           
+      const newCount = this.state.count + 1;                                 // variable that increments the count by 1.
+      this.setState({                                                        // sets the new state count.
+        count: newCount
+      })
+    }
+    render() {
+      return (
+        <div>
+          <p>The current count: {this.state.count}</p>
+          <button onClick={this.handleButtonClick}>
+            Add 1
+          </button>
+        </div>
+      )
+    }
+  }
+-------------------------------------------------------------------------
+
 
