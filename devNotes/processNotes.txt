@@ -334,3 +334,5 @@ export default TheDate;
 
 How do you implement event listeners?
 =====================================
+* Events and state go hand in hand.
+* It is VERY common to update state in response to a users action (i.e. submitting the form, interaction with a control, clicking a button, etc.)
