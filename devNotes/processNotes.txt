@@ -406,20 +406,22 @@ to a method on the class called "handleButtonClick"
 ----------------------------------------------------------------------------
 
 
-Then, 
+At this point, you will get an error that reads "TypeError: Cannot read property 'state' of undefined". This means
+that we are trying to read a property called state ona variable thats currently set to undefined.  We want to read "this",
+but right now it is set to undefined. To solve this, use an arrowfunction
 ------------------------------------------------------------------------
 class Counter extends React.Component {
   state = {
     count: 0
   };
-  handleButtonClick() {
+  handleButtonClick = () => {
     console.log(this.state.count)
   }
   render() {
     return (
       <div>
         <p>The current count: {this.state.count}</p>
-        <button onClick={() => this.handleButtonClick()}>
+        <button onClick={this.handleButtonClick}>
           Add 1
         </button>
       </div>
